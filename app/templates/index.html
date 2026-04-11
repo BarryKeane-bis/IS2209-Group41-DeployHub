@@ -4,88 +4,222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeployHub - Group 41</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .endpoint {
-            background: #2c3e50;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
             color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-family: monospace;
         }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d2ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 5px 15px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid #00d2ff;
+            border-radius: 20px;
+            color: #00d2ff;
+            font-size: 0.85rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.2s, border-color 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #00d2ff;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .endpoint-tag {
+            display: inline-block;
+            background: rgba(123, 47, 247, 0.2);
+            border: 1px solid #7b2ff7;
+            color: #c084fc;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
         .btn {
             display: inline-block;
-            margin-top: 10px;
-            padding: 8px 16px;
-            background: #3498db;
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #00d2ff, #7b2ff7);
             color: white;
-            border-radius: 4px;
+            border-radius: 8px;
             text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
         }
+
         .btn:hover {
-            background: #2980b9;
+            opacity: 0.85;
         }
-        .status-ok {
-            color: green;
-            font-weight: bold;
+
+        .status-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a0aec0;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #48bb78;
+            box-shadow: 0 0 8px #48bb78;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #4a5568;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
-    <h1>🏋️ DeployHub - Group 41</h1>
-    <p>A Flask-based gym plan web service integrating PostgreSQL and the API Ninjas Exercise API.</p>
 
-    <div class="card">
-        <h2>🟢 Health Check</h2>
-        <span class="endpoint">GET /health</span>
-        <p>Check if the app is running.</p>
-        <a class="btn" href="/health">Try it</a>
+    <header>
+        <h1>🏋️ DeployHub</h1>
+        <p>A Flask-based gym plan web service integrating PostgreSQL and the API Ninjas Exercise API.</p>
+        <span class="badge">Group 41 · IS2209</span>
+    </header>
+
+    <div class="status-bar">
+        <div class="status-item">
+            <div class="dot"></div>
+            App Online
+        </div>
+        <div class="status-item">
+            <div class="dot"></div>
+            Database Connected
+        </div>
+        <div class="status-item">
+            <div class="dot"></div>
+            CI/CD Pipeline Active
+        </div>
     </div>
 
-    <div class="card">
-        <h2>📊 Status</h2>
-        <span class="endpoint">GET /status</span>
-        <p>Check app and database connectivity.</p>
-        <a class="btn" href="/status">Try it</a>
+    <div class="grid">
+        <div class="card">
+            <div class="card-icon">🟢</div>
+            <h2>Health Check</h2>
+            <div class="endpoint-tag">GET /health</div>
+            <p>Check if the application is running and responding correctly.</p>
+            <a class="btn" href="/health">Try it</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h2>Status</h2>
+            <div class="endpoint-tag">GET /status</div>
+            <p>Check the app status and database connectivity in real time.</p>
+            <a class="btn" href="/status">Try it</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">💪</div>
+            <h2>Exercises</h2>
+            <div class="endpoint-tag">GET /exercises?muscle=chest</div>
+            <p>Fetch exercises from the API Ninjas Exercise API by muscle group.</p>
+            <a class="btn" href="/exercises?muscle=chest">Try it</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📋</div>
+            <h2>Workout Plans</h2>
+            <div class="endpoint-tag">GET /plans</div>
+            <p>Retrieve all workout plans stored in the PostgreSQL database.</p>
+            <a class="btn" href="/plans">Try it</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔗</div>
+            <h2>Combined Data</h2>
+            <div class="endpoint-tag">GET /data?muscle=chest</div>
+            <p>Get exercises and workout plans combined in one unified response.</p>
+            <a class="btn" href="/data?muscle=chest">Try it</a>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>💪 Exercises</h2>
-        <span class="endpoint">GET /exercises?muscle=chest</span>
-        <p>Fetch exercises from the API Ninjas Exercise API.</p>
-        <a class="btn" href="/exercises?muscle=chest">Try it</a>
-    </div>
+    <footer>
+        <p>IS2209 · Group 41 · Built with Flask, PostgreSQL & GitHub Actions</p>
+    </footer>
 
-    <div class="card">
-        <h2>📋 Workout Plans</h2>
-        <span class="endpoint">GET /plans</span>
-        <p>Get all workout plans from the database.</p>
-        <a class="btn" href="/plans">Try it</a>
-    </div>
-
-    <div class="card">
-        <h2>🔗 Combined Data</h2>
-        <span class="endpoint">GET /data?muscle=chest</span>
-        <p>Get exercises and workout plans combined in one response.</p>
-        <a class="btn" href="/data?muscle=chest">Try it</a>
-    </div>
 </body>
 </html>
