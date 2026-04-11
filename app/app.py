@@ -102,5 +102,45 @@ def create_plan():
     finally:
         conn.close()
 
+@app.route("/data")
+def data():
+    muscle = request.args.get("muscle", "chest")
+    api_key = os.getenv("EXTERNAL_API_KEY")
+
+    # Get exercises from external API
+    exercises_data = []
+    try:
+        response = requests.get(
+            "https://api.api-ninjas.com/v1/exercises",
+            headers={"X-Api-Key": api_key},
+            params={"muscle": muscle},
+            timeout=5
+        )
+        response.raise_for_status()
+        exercises_data = response.json()
+    except requests.exceptions.RequestException as e:
+        logger.error(f"request_id={request.request_id} error={str(e)}")
+        exercises_data = []
+
+    # Get plans from database
+    plans_data = []
+    conn = get_db_connection()
+    if conn:
+        try:
+            cur = conn.cursor()
+            cur.execute("SELECT id, name, user_id, created_at FROM workout_plans;")
+            rows = cur.fetchall()
+            plans_data = [{"id": r[0], "name": r[1], "user_id": r[2], "created_at": str(r[3])} for r in rows]
+        except Exception as e:
+            logger.error(f"DB error: {str(e)}")
+        finally:
+            conn.close()
+
+    return jsonify({
+        "exercises": exercises_data,
+        "plans": plans_data,
+        "muscle_group": muscle
+    })
+
 if __name__ == "__main__":
     app.run(debug=True)
