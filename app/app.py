@@ -4,7 +4,7 @@ import logging
 import uuid
 import time
 import psycopg2
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -34,6 +34,10 @@ def after_request(response):
     duration = time.time() - request.start_time
     logger.info(f"request_id={request.request_id} status={response.status_code} duration={duration:.3f}s")
     return response
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 @app.route("/health")
 def health():
@@ -107,7 +111,6 @@ def data():
     muscle = request.args.get("muscle", "chest")
     api_key = os.getenv("EXTERNAL_API_KEY")
 
-    # Get exercises from external API
     exercises_data = []
     try:
         response = requests.get(
@@ -122,7 +125,6 @@ def data():
         logger.error(f"request_id={request.request_id} error={str(e)}")
         exercises_data = []
 
-    # Get plans from database
     plans_data = []
     conn = get_db_connection()
     if conn:
@@ -143,4 +145,4 @@ def data():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=8080)

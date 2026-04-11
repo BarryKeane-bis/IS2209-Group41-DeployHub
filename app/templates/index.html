@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeployHub - Group 41</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .endpoint {
+            background: #2c3e50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .status-ok {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🏋️ DeployHub - Group 41</h1>
+    <p>A Flask-based gym plan web service integrating PostgreSQL and the API Ninjas Exercise API.</p>
+
+    <div class="card">
+        <h2>🟢 Health Check</h2>
+        <span class="endpoint">GET /health</span>
+        <p>Check if the app is running.</p>
+        <a class="btn" href="/health">Try it</a>
+    </div>
+
+    <div class="card">
+        <h2>📊 Status</h2>
+        <span class="endpoint">GET /status</span>
+        <p>Check app and database connectivity.</p>
+        <a class="btn" href="/status">Try it</a>
+    </div>
+
+    <div class="card">
+        <h2>💪 Exercises</h2>
+        <span class="endpoint">GET /exercises?muscle=chest</span>
+        <p>Fetch exercises from the API Ninjas Exercise API.</p>
+        <a class="btn" href="/exercises?muscle=chest">Try it</a>
+    </div>
+
+    <div class="card">
+        <h2>📋 Workout Plans</h2>
+        <span class="endpoint">GET /plans</span>
+        <p>Get all workout plans from the database.</p>
+        <a class="btn" href="/plans">Try it</a>
+    </div>
+
+    <div class="card">
+        <h2>🔗 Combined Data</h2>
+        <span class="endpoint">GET /data?muscle=chest</span>
+        <p>Get exercises and workout plans combined in one response.</p>
+        <a class="btn" href="/data?muscle=chest">Try it</a>
+    </div>
+</body>
+</html>
