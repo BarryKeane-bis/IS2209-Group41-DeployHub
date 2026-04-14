@@ -34,3 +34,13 @@ def test_data_endpoint_custom_muscle(client):
     res = client.get("/data?muscle=biceps")
     json_data = res.get_json()
     assert json_data["muscle_group"] == "biceps"
+
+def test_plans_get(client):
+    res = client.get("/plans")
+    assert res.status_code == 200
+
+def test_plans_post(client):
+    res = client.post("/plans", json={"name": "Test Plan", "user_id": "george"})
+    assert res.status_code in [200, 201, 503]
+
+
