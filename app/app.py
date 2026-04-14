@@ -37,10 +37,12 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    return jsonify({
-        "message": "Welcome to DeployHub!",
-        "endpoints": ["/health", "/status", "/exercises", "/plans", "/data"]
-    })
+    if os.getenv("FLASK_ENV") == "production":
+        return jsonify({
+            "message": "Welcome to DeployHub!",
+            "endpoints": ["/health", "/status", "/exercises", "/plans", "/data"]
+        })
+    return render_template("index.html")
 
 @app.route("/health")
 def health():
