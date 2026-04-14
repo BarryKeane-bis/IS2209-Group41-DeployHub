@@ -37,7 +37,10 @@ def after_request(response):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return jsonify({
+        "message": "Welcome to DeployHub!",
+        "endpoints": ["/health", "/status", "/exercises", "/plans", "/data"]
+    })
 
 @app.route("/health")
 def health():
