@@ -51,3 +51,8 @@ python app/app.py
 3. Visit /exercises?muscle=chest — returns live exercise data
 4. POST to /plans with `{"name": "My Chest Day", "user_id": "barry"}` — creates a workout plan
 ```
+## Contributors
+- Barry Keane
+- Conor Dalton
+- George Howard
+- Darragh Lee
