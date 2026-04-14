@@ -10,7 +10,7 @@ from pathlib import Path
 
 load_dotenv(Path(__file__).parent.parent / '.env')
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.join(os.path.dirname(__file__), 'templates'))
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 logger = logging.getLogger(__name__)
