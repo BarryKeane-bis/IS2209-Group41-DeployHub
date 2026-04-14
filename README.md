@@ -13,7 +13,7 @@ https://is2209-group41-deployhub.onrender.com
 
 ### Installation
 ```bash
-git clone https://github.com/BarryKeane-bis/IS2209_-Group41-_DeployHub.git
+git clone https://github.com/BarryKeane-bis/IS2209-Group41-DeployHub
 cd IS2209_-Group41-_DeployHub
 pip install -r requirements.txt
 ```
@@ -51,3 +51,8 @@ python app/app.py
 3. Visit /exercises?muscle=chest — returns live exercise data
 4. POST to /plans with `{"name": "My Chest Day", "user_id": "barry"}` — creates a workout plan
 ```
+## Contributors
+- Barry Keane
+- Conor Dalton
+- George Howard
+- Darragh Lee
