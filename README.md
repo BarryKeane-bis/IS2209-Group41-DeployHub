@@ -54,5 +54,5 @@ python app/app.py
 ## Contributors
 - Barry Keane
 - Conor Dalton
-- Darragh Lee
 - George Howard
+- Darragh Lee
