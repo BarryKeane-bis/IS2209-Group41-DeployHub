@@ -4,6 +4,8 @@ A Flask-based gym plan web service integrating PostgreSQL and the API Ninjas Exe
 
 ## Live Deployment
 https://is2209-group41-deployhub-el8k.onrender.com
+## GitHub Repository
+https://github.com/BarryKeane-bis/IS2209_-Group41-_DeployHub
 
 ## Setup
 
